@@ -1,0 +1,61 @@
+#!/bin/bash
+
+
+PYTHON=$(which python3)
+BASEDIR='/opt/ftp_account_manager/account_manager'
+BIND_ADDRESS='0.0.0.0:8099'
+LOGFILE='/var/log/account_manager.log'
+start_command="${PYTHON} manage.py runserver ${BIND_ADDRESS}"
+run_status=$(ps -ef | egrep "${start_command}" | grep -v grep)
+
+start(){
+    if [ ! -z "${run_status}" ];then
+        echo -e "\033[1;32maccount manager already running\033[0m"
+    else
+        cd ${BASEDIR}
+        nohup ${start_command} >> ${LOGFILE} 2>&1 &
+    fi
+}
+
+
+stop(){
+    if [ ! -z "${run_status}" ];then
+        pid=$(echo ${run_status} | awk '{print $2}')
+        kill ${pid}
+    fi
+}
+
+
+status(){
+    if [ ! -z "${run_status}" ];then
+        echo -e "\033[1;32maccount manager running\033[0m" 
+    else
+        echo -e "\033[1;31maccount manager stop\033[0m" 
+    fi
+}
+
+
+restart(){
+    stop
+    start
+}
+
+
+case $1 in
+    start)
+        start
+    ;;
+    stop)
+        stop
+    ;;
+    restart)
+        restart
+    ;;
+    status)
+        status
+    ;;
+    *)
+        echo "usage: $0 [start|stop|status]"
+    ;;
+esac
+    

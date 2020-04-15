@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>删除用户</h1>
+    <form action="/delete/" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div id='d1'></div>
+        <p><input type="submit" value="删除"></p>
+         <p><a href="/index/" style="color:blue">返回首页</a></p>
+    </form>
+</body>
+    <script type="text/javascript">
+        var arr = {{ Users | safe }}
+        for (var i = 0; i < arr.length; i++) {
+            var str = '<input name="delete_user" type="checkbox" value=' + arr[i] + '>' + arr[i]
+            document.getElementById('d1').innerHTML += str;
+        }
+    </script>
+</html>

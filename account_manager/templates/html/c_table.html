@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>用户创建成功</h2>
+<table border="1">
+    <tr>
+        <th align="center">用户</th>
+        <th align="center">家目录</th>
+        <th align="center">上传权限</th>
+        <th align="center">下载权限</th>
+        <th align="center">创建目录权限</th>
+        <th align="center">删改权限</th>
+    </tr>
+    <tr>
+        <td align="center">{{ username }}</td>
+        <td align="center">{{ homedir }}</td>
+        <td align="center">{{ can_upload}}</td>
+        <td align="center">{{ can_download }}</td>
+        <td align="center">{{ can_createdir }}</td>
+        <td align="center">{{ can_deletion}}</td>
+    </tr>
+</table>
+    <p><a href="/register/" style="color:blue">继续创建</a></p>
+</body>
+</html>

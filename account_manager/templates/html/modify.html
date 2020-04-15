@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>{{ username }}</h1>
+    <form action="/modify/" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>
+            用户密码<input type="password" name="password" style="margin-left:25px;margin-top:10px">
+        </p>
+
+        <p>
+            确认密码<input type="password" name="confirm_password" style="margin-left:25px;margin-top:10px">
+        </p>
+
+        <p>
+            用户家目录<input type="text" name="homedir" placeholder="{{ homedir }}" style="margin-left:10px;margin-top:10px">
+        </p>
+
+        <p>
+            <input type="hidden" name="can_upload" value="NO">
+            <input type="checkbox" name="can_upload" value="YES" {{ can_upload }} >上传权限
+            <input type="hidden" name="can_download" value="NO">
+            <input type="checkbox" name="can_download" value="YES" {{ can_download }} >下载权限
+            <input type="hidden" name="can_createdir" value="NO">
+            <input type="checkbox" name="can_createdir" value="YES" {{ can_createdir }} >创建目录权限
+            <input type="hidden" name="can_deletion" value="NO">
+            <input type="checkbox" name="can_deletion" value="YES" {{ can_deletion }} >删改权限
+        </p>
+
+        <input type="submit">
+        <p><a href="/index/" style="color:blue">返回首页</a></p>
+    </form>
+</body>
+</html>
