@@ -46,7 +46,12 @@ class Ftp:
 
     # 写入用户配置及文件
     def write_config(self, username, homedir, can_upload, can_download, can_createdir, can_deletion):
-        config = 'local_root=%s\ndownload_enable=%s\nanon_upload_enable=%s\nanon_mkdir_write_enable=%s\nanon_other_write_enable=%s' %\
+        if can_download == 'YES':
+            can_download = 'NO'
+        else:
+            can_download = 'YES'
+
+        config = 'local_root=%s\nanon_upload_enable=%s\nanon_world_readable_only=%s\nanon_mkdir_write_enable=%s\nanon_other_write_enable=%s' %\
         (homedir, can_upload, can_download, can_createdir, can_deletion)
 
         with open(self.user_config + '/' + username, 'w', encoding='utf-8') as w_file:
