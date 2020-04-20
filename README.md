@@ -6,7 +6,8 @@
     2. django (本人测试版本为3.0.4) pip安装
     3. mysqlclient (本人测试版本为1.4.6) pip安装
     4. vsftpd server
-    5. mysql server
+    5. mysql server，devel
+
 
 # vsftpd 配置文件,首次启动可进行修改(符合虚拟用户的配置)
     other/vsftpd.conf
