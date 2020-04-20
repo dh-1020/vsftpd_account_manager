@@ -3,8 +3,8 @@
 
 # 依赖于
     1. python3.x (本人测试版本为3.6.8)
-    2. django (本人测试版本为3.0.4)
-    3. mysqlclient (本人测试版本为1.4.6)
+    2. django (本人测试版本为3.0.4) pip安装
+    3. mysqlclient (本人测试版本为1.4.6) pip安装
     4. vsftpd server
     5. mysql server
 
